@@ -16,5 +16,8 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.27.2"
+  },
+  "devDependencies": {
+    "prettier": "2.6.2"
   }
 }
