@@ -8,9 +8,12 @@ let {data:{results}} = response ;
 let characters = results.map((character) => {
 return{
 id: character.id,
-name: character.name,};
-
-});
+name: character.name,
+status: character.status,
+species: character.species,
+};
+//añado un nuevo map para que solo retorne lo valores
+}).map((personaje) => Object.values(personaje).join(', '));
 console.log(characters);
 };
 main();
