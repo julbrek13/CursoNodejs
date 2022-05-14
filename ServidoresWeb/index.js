@@ -30,6 +30,21 @@ app.get("/", (req, res) => {
   });
   //hay que cerrar y volver a abrir el servidor para ver los cambios(para que no suceda esto usaremos nodemon a constinucacion)
 });
+//ahora trabajermeos en la seccion de la ruta, aca podemos pedir parametros para enviar una respuesta adecuada.
+//especifico que ademas de una ruta voy a recibir un id
+app.get("/:id", (req, res) => {
+  //mejoramos la sintaxis
+  let {
+    params: { id },
+  } = req;
+  let user = service.getUser(id);
+  //pruebo que devuelva data
+  res.json({
+    message: `usuario ${id}`,
+    body: user,
+  });
+  //hay que cerrar y volver a abrir el servidor para ver los cambios(para que no suceda esto usaremos nodemon a constinucacion)
+});
 
 //listen recibe un  un puerto que nos indica cuando este levantado y un callback
 app.listen(PORT, () => {

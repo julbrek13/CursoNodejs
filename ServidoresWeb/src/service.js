@@ -6,6 +6,13 @@ const data = require("./MOCK_DATA.json");
 module.exports = {
   //construimos propiedades de objeto
   // el return esta implicito (devuelve data);
+  getUser: (id) => {
+    //como id es un string con el metodo number lo convierto en entero.
+    let identificador = Number(id);
+    //retorna un arreglo con las coincidencias de la busqueda.
+    let user = data.filter((persona) => persona.id === identificador)[0];
+    return user;
+  },
   getUsers: () => data,
   createUser: (dataUser) => {
     let newUser = {
