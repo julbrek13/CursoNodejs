@@ -37,13 +37,22 @@ app.get("/:id", (req, res) => {
   let {
     params: { id },
   } = req;
-  let user = service.getUser(id);
+
   //pruebo que devuelva data
   res.json({
     message: `usuario ${id}`,
     body: user,
   });
   //hay que cerrar y volver a abrir el servidor para ver los cambios(para que no suceda esto usaremos nodemon a constinucacion)
+});
+
+app.delete("/:id", (req, res) => {
+  const user = service.getUser(req.params.id);
+  let {
+    params: { id },
+  } = req;
+
+  res.send(service.deleteUser(id));
 });
 
 //listen recibe un  un puerto que nos indica cuando este levantado y un callback

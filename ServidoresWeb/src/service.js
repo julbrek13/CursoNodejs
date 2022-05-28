@@ -26,4 +26,21 @@ module.exports = {
     //retrona el nuevo
     return newUser;
   },
+
+  deleteUser: (id) => {
+    let identificador = Number(id);
+    let user = data.filter((person) => person.id === identificador)[0];
+    if (user == undefined) {
+      return "El usuario que intenta eliminar no existe";
+    } else {
+      let userAEliminar = data.findIndex(
+        (userToDelete) => userToDelete.id === identificador
+      );
+      let datosEliminados = data.find(
+        (userToDelete) => userToDelete.id === identificador
+      );
+      data.splice(userAEliminar, 1);
+      return `Eliminados los datos del usuario ${datosEliminados.first_name} con ID ${datosEliminados.id}`;
+    }
+  },
 };
